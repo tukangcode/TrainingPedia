@@ -1,6 +1,6 @@
 # TrainingPedia
 
-**TrainingPedia** (formerly known as *clonepeda*) is a static HTML and JavaScript site designed to replicate and create an open-source version of a course site. The purpose of TrainingPedia is to provide a simple, open-source design that anyone can use to create their own course website or, simply, to explore and have some fun.
+**TrainingPedia** (formerly known as *clonepedia*) is a static HTML and JavaScript site designed to replicate and create an open-source version of a course site. The purpose of TrainingPedia is to provide a simple, open-source design that anyone can use to create their own course website or, simply, to explore and have some fun.
 
 The original site this project is replicating is **[https://skillpedia.id/](https://skillpedia.id/)**.
 
