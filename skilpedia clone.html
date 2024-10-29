@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clonepedia Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #f5c521;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: #000;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 15px;
+        }
+        .navbar .menu a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        .content h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .filter-category {
+            margin: 20px 0;
+        }
+        .filter-category input {
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            text-decoration: none;
+            flex-grow: 1;
+        }
+        .card-info {
+            color: #666;
+            font-size: 14px;
+            margin-top: auto;
+        }
+        .pagination {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .pagination a {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .pagination a:hover {
+            background-color: #f5c521;
+            color: #000;
+        }
+        /* Remove default link styling */
+        .card a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+    <script>
+        function filterClasses() {
+            const filterValue = document.getElementById('filterInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                if (title.includes(filterValue)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">CLONEPEDIA</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">How to Access</a>
+            <a href="#">Class Access</a>
+            <a href="#">Profile</a>
+            <a href="#">Other</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Select the Class You Want to Learn &#128522;</h2>
+        <div class="filter-category">
+            <input type="text" id="filterInput" placeholder="Filter Category" onkeyup="filterClasses()">
+        </div>
+        <div class="grid">
+            <!-- Existing Cards -->
+            <div class="card">
+                <a href="capcut-desktop-video-editing.html">
+                    <img src="https://via.placeholder.com/400x300" alt="Capcut Desktop Video Editing Class">
+                </a>
+                <a href="capcut-desktop-video-editing.html">
+                    <div class="card-title">Capcut Desktop Video Editing Class</div>
+                </a>
+                <div class="card-info">36 Lessons - 3 Hours 20 Minutes</div>
+            </div>
+            <div class="card">
+                <a href="canva-desktop-design.html">
+                    <img src="https://via.placeholder.com/400x300" alt="Canva Desktop Design Class">
+                </a>
+                <a href="canva-desktop-design.html">
+                    <div class="card-title">Canva Desktop Design Class</div>
+                </a>
+                <div class="card-info">21 Lessons - 3 Hours 20 Minutes</div>
+            </div>
+            <div class="card">
+                <a href="seo-class.html">
+                    <img src="https://via.placeholder.com/400x300" alt="Search Engine Optimization (SEO) Class">
+                </a>
+                <a href="seo-class.html">
+                    <div class="card-title">Search Engine Optimization (SEO) Class</div>
+                </a>
+                <div class="card-info">18 Lessons - 3 Hours 20 Minutes</div>
+            </div>
+            <!-- New Cards Added Below -->
+            <div class="card">
+                <a href="javascript-programming-class.html">
+                    <img src="https://via.placeholder.com/400x300" alt="JavaScript Programming Class">
+                </a>
+                <a href="javascript-programming-class.html">
+                    <div class="card-title">JavaScript Programming Class</div>
+                </a>
+                <div class="card-info">25 Lessons - 4 Hours 15 Minutes</div>
+            </div>
+            <div class="card">
+                <a href="graphic-design-basics.html">
+                    <img src="https://via.placeholder.com/400x300" alt="Graphic Design Basics Class">
+                </a>
+                <a href="graphic-design-basics.html">
+                    <div class="card-title">Graphic Design Basics Class</div>
+                </a>
+                <div class="card-info">30 Lessons - 5 Hours</div>
+            </div>
+            <div class="card">
+                <a href="digital-marketing-fundamentals.html">
+                    <img src="https://via.placeholder.com/400x300" alt="Digital Marketing Fundamentals Class">
+                </a>
+                <a href="digital-marketing-fundamentals.html">
+                    <div class="card-title">Digital Marketing Fundamentals Class</div>
+                </a>
+                <div class="card-info">22 Lessons - 3 Hours 45 Minutes</div>
+            </div>
+        </div>
+        <div class="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+        </div>
+    </div>
+</body>
+</html>
