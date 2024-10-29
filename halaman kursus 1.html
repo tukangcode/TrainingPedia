@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capcut Desktop Video Editing Class</title>
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* styles.css content */
+
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar Styling */
+        .navbar {
+            background-color: #f5c521;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo Styling */
+        .navbar .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: #000;
+        }
+
+        /* Menu Container Styling */
+        .navbar .menu {
+            display: flex;
+            gap: 15px; /* Space between menu items */
+        }
+
+        /* Menu Links Styling */
+        .navbar .menu a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 4px;
+        }
+
+        /* Hover Effect for Menu Links */
+        .navbar .menu a:hover,
+        .navbar .menu a.active {
+            background-color: #e0b200;
+            color: #fff;
+        }
+
+        /* Focus Effect for Menu Links */
+        .navbar .menu a:focus {
+            outline: 2px solid #e0b200;
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design: Adjust Menu for Smaller Screens */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar .menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar .menu a {
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+        /* Content Styling */
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Course Header Styling */
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .course-header h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .course-description {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .start-learning {
+            padding: 10px 20px;
+            background-color: #f5c521;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            color: #000;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 10px;
+        }
+
+        .start-learning:hover {
+            background-color: #e0b200;
+            color: #fff;
+        }
+
+        /* Curriculum Section Styling */
+        .curriculum {
+            margin-top: 40px;
+        }
+
+        .curriculum h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: left;
+        }
+
+        .curriculum-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .curriculum-list li:hover {
+            background-color: #f0f0f0;
+        }
+
+        .curriculum-list li span.module-title a {
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+        .curriculum-list li span.module-title a:hover {
+            color: #f5c521;
+        }
+
+        .curriculum-list li .duration {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Mentor Section Styling */
+        .mentor {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .mentor img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .mentor-info {
+            color: #333;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .mentor-info h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .mentor-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        /* Reviews Section Styling */
+        .reviews {
+            margin-top: 40px;
+        }
+
+        .reviews h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: left;
+        }
+
+        .review {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .review h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .review p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #f5c521;
+            padding: 20px;
+            text-align: center;
+            color: #000;
+            margin-top: 40px;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Module Sections Styling */
+        .module-section {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .module-section p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* Back to Top Button Styling */
+        #backToTop {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #f5c521;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        #backToTop:hover {
+            background-color: #e0b200;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="logo">SKILLPEDIA</div>
+        <nav class="menu">
+            <a href="#home">Home</a>
+            <a href="#how-to-access">How to Access</a>
+            <a href="#class-access">Class Access</a>
+            <a href="#profile">Profile</a>
+            <a href="#other">Other</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <!-- Course Header -->
+        <section class="course-header" id="home">
+            <div>
+                <h1>Capcut Desktop Video Editing Class</h1>
+                <p class="course-description">
+                    Gain experience in video editing using Capcut from an experienced instructor, ready to guide you from beginner to advanced level.
+                </p>
+            </div>
+            <a href="#curriculum" class="start-learning">Start Learning</a>
+        </section>
+
+        <!-- Curriculum Section -->
+        <section class="curriculum" id="curriculum">
+            <h2>Curriculum</h2>
+            <ul class="curriculum-list">
+                <li>
+                    <span class="module-title"><a href="#introduction-to-capcut">Introduction to Capcut</a></span>
+                    <span class="duration">5 menit</span>
+                </li>
+                <li>
+                    <span class="module-title"><a href="#import-media-and-basic-timeline">Import Media and Basic Timeline</a></span>
+                    <span class="duration">10 menit</span>
+                </li>
+                <li>
+                    <span class="module-title"><a href="#basic-editing">Basic Editing: Cut, Split, and Trim</a></span>
+                    <span class="duration">15 menit</span>
+                </li>
+                <li>
+                    <span class="module-title"><a href="#adding-music-and-audio">Adding Music and Audio</a></span>
+                    <span class="duration">10 menit</span>
+                </li>
+                <li>
+                    <span class="module-title"><a href="#using-effects-and-transitions">Using Effects and Transitions</a></span>
+                    <span class="duration">12 menit</span>
+                </li>
+                <li>
+                    <span class="module-title"><a href="#export-video">Export Video with Best Quality</a></span>
+                    <span class="duration">8 menit</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Mentor Section -->
+        <section class="mentor">
+            <img src="https://via.placeholder.com/80" alt="Mentor">
+            <div class="mentor-info">
+                <h3>KoffeMaker</h3>
+                <p>Video Editor & Professional Instructor</p>
+                <p>KoffeMaker is an experienced video editor with 5 years in the creative industry, ready to guide you in learning video editing.</p>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Reviews</h2>
+            <div class="review">
+                <h3>Hendra Wijaya</h3>
+                <p>"This class really helped me understand the basics of video editing with Capcut. The instructor explained the material very clearly."</p>
+            </div>
+            <div class="review">
+                <h3>Ratna Sari</h3>
+                <p>"The material was very easy to understand, and there were many practical tips that could be immediately applied. Highly recommended!"</p>
+            </div>
+            <div class="review">
+                <h3>Bimo Prasetyo</h3>
+                <p>"Very good for beginners like me. KoffeMaker explains every step in detail and patiently."</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2024 Clonepedia. All Rights Reserved.
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to Top">↑</button>
+
+    <!-- External JavaScript -->
+    <script>
+        // scripts.js content
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top Button Functionality
+            const backToTopButton = document.getElementById("backToTop");
+
+            window.onscroll = function() { scrollFunction(); };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    backToTopButton.style.display = "block";
+                } else {
+                    backToTopButton.style.display = "none";
+                }
+            }
+
+            backToTopButton.addEventListener('click', function(){
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Highlight Active Curriculum Link
+            const sections = document.querySelectorAll('.module-section');
+            const navLinks = document.querySelectorAll('.curriculum-list li span.module-title a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
